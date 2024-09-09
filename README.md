@@ -1,8 +1,46 @@
-# React + Vite
+# WalletConnect Integration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a basic implementation of WalletConnect integration in a React application. It allows users to connect to Ethereum, Solana, and Polkadot wallets using WalletConnect.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- Connect to Ethereum, Solana, and Polkadot wallets using WalletConnect.
+- Display the connected wallet address.
+- Disconnect from the connected wallet.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/walletconnect-integration.git
+   cd walletconnect-integration
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   yarn install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   yarn dev
+   ```
+
+## Usage
+
+- Open your browser and navigate to http://localhost:5173.
+- Click the "Connect to Ethereum", "Connect to Solana", or "Connect to Polkadot" buttons to generate the appropriate QR codes.
+- Scan the QR code with a WalletConnect-compatible wallet (e.g., MetaMask, Trust Wallet) to establish the connection.
+- Once connected, the wallet address will be displayed on the screen.
+- Click the "Disconnect" button to disconnect the session.
