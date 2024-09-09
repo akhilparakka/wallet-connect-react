@@ -7,8 +7,6 @@ This repository contains a basic implementation of WalletConnect integration in 
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
