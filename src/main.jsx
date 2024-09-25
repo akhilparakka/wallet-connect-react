@@ -3,6 +3,10 @@ import App from "./App.jsx";
 import "./index.css";
 import { ClientContextProvider } from "./contexts/ClientContext.jsx";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
+import { PetraWallet } from "petra-plugin-wallet-adapter";
+import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
+
+const wallets = [new PetraWallet()];
 
 createRoot(document.getElementById("root")).render(
   <ClientContextProvider>
@@ -108,7 +112,9 @@ createRoot(document.getElementById("root")).render(
       }}
       restoreConnection={false}
     >
-      <App />
+      <AptosWalletAdapterProvider plugins={wallets} autoConnect={false}>
+        <App />
+      </AptosWalletAdapterProvider>
     </TonConnectUIProvider>
   </ClientContextProvider>
 );
