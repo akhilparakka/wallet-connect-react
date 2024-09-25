@@ -119,16 +119,34 @@ export function ClientContextProvider({ children }) {
                 solana: {
                   methods: ["solana_signTransaction", "solana_signMessage"],
                   chains: ["solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"],
-                  events: ["accountChanged"],
+                  events: [],
                 },
               }
-            : {
+            : chain === "polkadot"
+            ? {
                 polkadot: {
                   methods: ["polkadot_signTransaction", "polkadot_signMessage"],
                   chains: ["polkadot:91b171bb158e2d3848fa23a9f1c25182"],
                   events: ["accountChanged"],
                 },
-              };
+              }
+            : chain === "tron"
+            ? {
+                tron: {
+                  methods: ["tron_signTransaction", "tron_signMessage"],
+                  chains: ["tron:0x2b6653dc"],
+                  events: [],
+                },
+              }
+            : chain === "stellar"
+            ? {
+                stellar: {
+                  methods: ["stellar_signTransaction", "stellar_signMessage"],
+                  chains: ["stellar:public"],
+                  events: [],
+                },
+              }
+            : {};
 
         const { uri, approval } = await client.connect({
           requiredNamespaces,
@@ -143,7 +161,9 @@ export function ClientContextProvider({ children }) {
         setAccount(
           session.namespaces.eip155?.accounts[0]?.split(":")[2] ||
             session.namespaces.solana?.accounts[0]?.split(":")[2] ||
-            session.namespaces.polkadot?.accounts[0]?.split(":")[2]
+            session.namespaces.polkadot?.accounts[0]?.split(":")[2] ||
+            session.namespaces.tron?.accounts[0]?.split(":")[2] ||
+            session.namespaces.stellar?.accounts[0]
         );
         setPairings(client.pairing.getAll({ active: true }));
       } catch (error) {
