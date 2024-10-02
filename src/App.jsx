@@ -73,7 +73,21 @@ function App() {
 
   const handleConnectPolkadot = async () => {
     try {
-      await connect("polkadot");
+      if (window.injectedWeb3 && window.injectedWeb3["subwallet-js"]) {
+        console.log("SubWallet found:", window.injectedWeb3);
+        const SubWalletExtension = window.injectedWeb3["subwallet-js"];
+        const extension = await SubWalletExtension.enable();
+        console.log("extension", extension);
+        // Get the accounts from the extension
+        const accounts = await extension.accounts.get();
+        const address = accounts[0].address;
+
+        setUserAddress(address); // Update the user address state
+      } else {
+        console.log("No SubWallet found. Connecting via WalletConnect...");
+        await connect("polkadot"); // Fallback to WalletConnect if no wallet is available
+        console.log("Connected via WalletConnect");
+      }
     } catch (error) {
       console.error("Failed to connect to Polkadot:", error);
     }
