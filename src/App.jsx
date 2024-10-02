@@ -4,7 +4,11 @@ import React, { useState, useCallback } from "react";
 import "./App.css";
 import { useWalletConnectClient } from "./contexts/ClientContext";
 import detectEthereumProvider from "@metamask/detect-provider";
-
+import {
+  isConnected,
+  getPublicKey,
+  signTransaction,
+} from "@lobstrco/signer-extension-api";
 // async function setup() {
 //   const provider = await detectEthereumProvider();
 
@@ -146,9 +150,25 @@ function App() {
 
   const handleConnectStellar = async () => {
     try {
-      await connect("stellar");
+      // Check if the LOBSTR signer extension is available
+      if (await isConnected()) {
+        console.log("LOBSTR signer extension found");
+
+        // Get the public key of the connected account
+        const publicKey = await getPublicKey();
+        console.log("Connected to Stellar with public key:", publicKey);
+
+        // Set the user address in your state
+        setUserAddress(publicKey);
+      } else {
+        console.log(
+          "LOBSTR extension not connected. Please connect your wallet."
+        );
+
+        await connect("stellar");
+      }
     } catch (error) {
-      console.error("Failed to connect to Stellar:", error);
+      console.error("Failed to connect to Stellar via LOBSTR signer:", error);
     }
   };
 

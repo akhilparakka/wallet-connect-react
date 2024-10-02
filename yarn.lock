@@ -408,6 +408,11 @@
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.0.0"
 
+"@lobstrco/signer-extension-api@^1.0.0-beta.0":
+  version "1.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@lobstrco/signer-extension-api/-/signer-extension-api-1.0.0-beta.0.tgz#785b9ba93b879f7d7f61998ae94de409b8d6f8aa"
+  integrity sha512-16V34W9MyTgunGvgkzv1JmV+k59OjNWCrNOH+KH+6vWamcGDGBnFhvRgGEarEhINYITMGkdqEvaEy7qTD5s5cw==
+
 "@metamask/detect-provider@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@metamask/detect-provider/-/detect-provider-2.0.0.tgz#4bc2795e5e6f7d8b84b2e845058d2f222c99917d"

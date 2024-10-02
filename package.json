@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lobstrco/signer-extension-api": "^1.0.0-beta.0",
     "@metamask/detect-provider": "^2.0.0",
     "@walletconnect/encoding": "^1.0.1",
     "@walletconnect/sign-client": "2.15.2",
